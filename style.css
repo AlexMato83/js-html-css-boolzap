@@ -5,92 +5,112 @@
   box-sizing: border-box;
 }
 
-/* inizio debug */
-#sfondo{
-  background-color: blue;
+body {
+  font-family: 'Lato', sans-serif;
+
 }
-#contenitore {
-  background-color: grey;
-}
-#contatti {
-  background-color: green;
-}
-#contatti-fissa{
-  background-color: orange;
-}
-#contatti-fissa-notifiche{
-  background-color: red;
-}
-#contatti-fissa-cerca{
-  background-color: brown;
-}
-#contatti-utenti {
-  background-color: black;
-}
-main{
-  background-color: red;
-}
-.cont-utenti-singoli {
-  border: 2px solid white;
-}
-#contatti-fissa-notifiche{
-  background-color: pink;
-}
-#contatti-fissa-cerca{
-  background-color: lightblue;
-}
-#chat {
-  background-color: grey;
-}
-footer {
-  background-color: black;
-}
-/* fine   debug */
 /* inizio sezione sfondo */
 #sfondo {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-image: linear-gradient(to bottom, #009688 0px, #009688 15vh, #dddbd1 15vh, #d2dbdc 100% );
 }
-#header-sx{
-  background-color: lightblue;
-}
-#header-dx{
-  background-color: pink;
-}
+
+
 /* fine sezione sfondo   */
 /* inizio contenitore principale */
 #contenitore{
   width: 82%;
-  height: 90%;
+  height: calc(100% - 60px);
   margin: 30px auto;
   position: relative;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 /* inizio header del contenitore */
 #head-contenitore{
   width: 100%;
   height: 80px;
-  position: absolute;
-  top:0;
-  left:0;
   display: flex;
 }
+/* inizio header sx   */
 #header-sx {
   width:38%;
   height: 100%;
+  background-color: #EAEAEA;
+  border-right: 1px solid #D6D6D6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 25px;
 }
+#header-sx i {
+  color: rgb(177, 177, 177);
+}
+#image {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: white;
+}
+#image img {
+  width:100%;
+  height: 100%;
+}
+#header-sx div:nth-child(2){
+  width: 45%;
+  height: 35%;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+#header-sx div:nth-child(2) i{
+  font-size: x-large;
+}
+/* fine header sx   */
+/* inizio header DX */
 #header-dx {
   width: 62%;
   height: 100%;
+  background-color: #EAEAEA;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 25px;
 }
+#profili {
+  width: 45%;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+#profili img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+#profili div {
+  margin-left: 20px;
+  line-height: 1.5;
+}
+#profili div h3{
+  font-size: 18px;
+  font-weight: 400;
+}
+#profili div p{
+  color: #6B7376;
+  font-size: 15px;
+}
+
+
+/* fine header dx */
 /* fine header del contenitore   */
 /* inizio main  */
 main {
-  height: 100%;
-  margin-top: 80px;
-
+  height: calc(100% - 80px);
   display: flex;
 }
 /* inizio lista contatti a sx */
@@ -99,6 +119,7 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid #D6D6D6;
 }
 #contatti-fissa {
   height: 150px;
@@ -107,10 +128,12 @@ main {
 #contatti-fissa-notifiche {
   height: 100px;
   width: 100%;
+  background-color: #8EDAFC;
 }
 #contatti-fissa-cerca{
   height: 50px;
   width: 100%;
+  background: #FAFAFA
 }
 #cont-utenti {
   height: 100%;
@@ -118,8 +141,15 @@ main {
 }
 .cont-utenti-singoli{
   height: 100px;
+  border-bottom: 1px solid #F5F5F5;
+  background:white;
 }
-
+.sfondo-bianco{
+  background: white;
+}
+.sfondo-selezionato{
+  background: #E9EBEB;
+}
 /* fine   lista contatti a sx */
 /* inizio spazio chat a dx    */
 #chat{
@@ -127,11 +157,19 @@ main {
   height: 100%;
   display: flex;
   align-items: flex-end;
+  background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12ee6265-e947-474a-a378-6d78ab0d1117/d8fr7iz-082cab4c-3f87-47e1-b2f0-efdb504372e5.jpg/v1/fill/w_1024,h_576,q_75,strp/super_hero_whatsapp_background_by_x_ama_d8fr7iz-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvMTJlZTYyNjUtZTk0Ny00NzRhLWEzNzgtNmQ3OGFiMGQxMTE3XC9kOGZyN2l6LTA4MmNhYjRjLTNmODctNDdlMS1iMmYwLWVmZGI1MDQzNzJlNS5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BzcKtmJbHcafn-3f4-9tNEiybd-JbKGVeynAsEJFICI");
+
 }
 footer {
   height: 90px;
   width: 100%;
-
+  background: #F3EEEA;
+}
+#chattina {
+  height: calc(100% - 90px);
+}
+p {
+  color: white;
 }
 /* fine   spazio chat a dx    */
 
