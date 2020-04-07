@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: 'Lato', sans-serif;
 
@@ -103,9 +104,21 @@ body {
 #profili div p{
   color: #6B7376;
   font-size: 15px;
+
 }
-
-
+#icone{
+    width: 25%;
+    height: 35%;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+}
+#icone i {
+  font-size: x-large;
+}
+#header-dx div:nth-child(2) i{
+  color:rgb(177, 177, 177);
+}
 /* fine header dx */
 /* fine header del contenitore   */
 /* inizio main  */
@@ -113,7 +126,7 @@ main {
   height: calc(100% - 80px);
   display: flex;
 }
-/* inizio lista contatti a sx */
+/* inizio div contatti a sx */
 #contatti{
   width: 38%;
   height: 100%;
@@ -125,52 +138,158 @@ main {
   height: 150px;
   width: 100%;
 }
+/* inizio notifica e search */
 #contatti-fissa-notifiche {
   height: 100px;
   width: 100%;
   background-color: #8EDAFC;
+  display: flex;
+  align-items: center;
 }
+#contatti-fissa-notifiche div {
+  display: flex;
+  align-items: center;
+}
+#contatti-fissa-notifiche div i{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: white;
+  color: #8EDAFC;
+  font-size: x-large;
+  text-align: center;
+  padding: 15px;
+  margin-left:25px;
+}
+#contatti-fissa-notifiche div h3{
+ margin-left:10px;
+ font-size: 18px;
+ font-weight: 400;
+}
+#contatti-fissa-notifiche div h3 p{
+  color: #6B7376;
+  font-size: 15px;
+  text-decoration: underline;
+}
+
 #contatti-fissa-cerca{
   height: 50px;
   width: 100%;
-  background: #FAFAFA
+  background: #FAFAFA;
+  padding:6px;
 }
+#contatti-fissa-cerca input{
+  height: 100%;
+  width: 100%;
+}
+/* fine  notifica e search */
+/* inizio lista contatti */
 #cont-utenti {
   height: 100%;
   overflow: auto;
+  padding-right: 16px;
+  background: #FAFAFA;
 }
 .cont-utenti-singoli{
   height: 100px;
   border-bottom: 1px solid #F5F5F5;
   background:white;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
 }
+.cont-utenti-singoli img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.cont-ut-sing-dati{
+  width:80%;
+  height: 80px;
+  margin-left: 20px;
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cont-ut-sing-dati h3{
+  font-size: 18px;
+  font-weight: 400;
+}
+.cont-ut-sing-dati p{
+  color: #6B7376;
+  font-size: 15px;
+}
+.cont-ut-sing-dati p ~ p{
+  position: absolute;
+  top:2px;
+  right: 5px;
+}
+
 .sfondo-bianco{
   background: white;
 }
 .sfondo-selezionato{
   background: #E9EBEB;
 }
-/* fine   lista contatti a sx */
+/* fine lista contatti  */
+/* fine   div contatti a sx */
 /* inizio spazio chat a dx    */
 #chat{
   width: 62%;
   height: 100%;
-  display: flex;
-  align-items: flex-end;
   background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12ee6265-e947-474a-a378-6d78ab0d1117/d8fr7iz-082cab4c-3f87-47e1-b2f0-efdb504372e5.jpg/v1/fill/w_1024,h_576,q_75,strp/super_hero_whatsapp_background_by_x_ama_d8fr7iz-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvMTJlZTYyNjUtZTk0Ny00NzRhLWEzNzgtNmQ3OGFiMGQxMTE3XC9kOGZyN2l6LTA4MmNhYjRjLTNmODctNDdlMS1iMmYwLWVmZGI1MDQzNzJlNS5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.BzcKtmJbHcafn-3f4-9tNEiybd-JbKGVeynAsEJFICI");
 
 }
+#chat-main {
+  height: calc(100% - 90px);
+  overflow-y: scroll;
+}
+#chat-main-margini {
+  width: 80%;
+  height: 100%;
+  margin:0 auto;
+  display:
+}
+.chat-main-blocchimex {
+  width: 100%;
+  height: 80px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+.chat-main-bloc-int {
+  width: 180px;
+  height: 80%;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat-main-blocchimex:nth-child(4){
+   justify-content: flex-end;
+}
+.chat-main-blocchimex:nth-child(4) div{
+background: #D5F9BA;
+}
+/* fine   spazio chat a dx    */
+/* inizio footerino */
 footer {
   height: 90px;
   width: 100%;
   background: #F3EEEA;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-#chattina {
-  height: calc(100% - 90px);
+#mex {
+  width: 80%;
+  height: 70%;
 }
-p {
-  color: white;
+footer i {
+  font-size: 30px;
 }
-/* fine   spazio chat a dx    */
 
 /* fine   contenitore principale */
