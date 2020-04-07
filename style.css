@@ -1,0 +1,87 @@
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+/* inizio debug */
+#sfondo{
+  background-color: blue;
+}
+#contenitore {
+  background-color: grey;
+}
+#contatti {
+  background-color: green;
+}
+#contatti-fissa{
+  background-color: orange;
+}
+#contatti-fissa-notifiche{
+  background-color: red;
+}
+#contatti-fissa-cerca{
+  background-color: brown;
+}
+#contatti-utenti {
+  background-color: black;
+}
+main{
+  background-color: red;
+}
+/* fine   debug */
+/* inizio sezione sfondo */
+#sfondo {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+#header-sx{
+  background-color: lightblue;
+}
+#header-dx{
+  background-color: pink;
+}
+/* fine sezione sfondo   */
+/* inizio contenitore principale */
+#contenitore{
+  width: calc(100% - 18%);
+  height: calc(100% - 10%);
+  margin: 30px auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+/* inizio header del contenitore */
+#head-contenitore{
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top:0;
+  left:0;
+  display: flex;
+}
+#header-sx {
+  width:38%;
+  height: 100%;
+}
+#header-dx {
+  width: 62%;
+  height: 100%;
+}
+/* fine header del contenitore   */
+/* inizio main  */
+main {
+  /* height: calc(100% -80px);
+  margin-top: 80px; */
+  height: 100%;
+  display: flex;
+}
+/* inizio lista contatti a sx */
+#contatti{
+  width
+}
+/* fine   lista contatti a sx */
+
+/* fine   contenitore principale */
