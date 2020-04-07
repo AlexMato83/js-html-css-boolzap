@@ -30,6 +30,21 @@
 main{
   background-color: red;
 }
+.cont-utenti-singoli {
+  border: 2px solid white;
+}
+#contatti-fissa-notifiche{
+  background-color: pink;
+}
+#contatti-fissa-cerca{
+  background-color: lightblue;
+}
+#chat {
+  background-color: grey;
+}
+footer {
+  background-color: black;
+}
 /* fine   debug */
 /* inizio sezione sfondo */
 #sfondo {
@@ -46,8 +61,8 @@ main{
 /* fine sezione sfondo   */
 /* inizio contenitore principale */
 #contenitore{
-  width: calc(100% - 18%);
-  height: calc(100% - 10%);
+  width: 82%;
+  height: 90%;
   margin: 30px auto;
   position: relative;
   display: flex;
@@ -73,15 +88,51 @@ main{
 /* fine header del contenitore   */
 /* inizio main  */
 main {
-  /* height: calc(100% -80px);
-  margin-top: 80px; */
   height: 100%;
+  margin-top: 80px;
+
   display: flex;
 }
 /* inizio lista contatti a sx */
 #contatti{
-  width
+  width: 38%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+#contatti-fissa {
+  height: 150px;
+  width: 100%;
+}
+#contatti-fissa-notifiche {
+  height: 100px;
+  width: 100%;
+}
+#contatti-fissa-cerca{
+  height: 50px;
+  width: 100%;
+}
+#cont-utenti {
+  height: 100%;
+  overflow: auto;
+}
+.cont-utenti-singoli{
+  height: 100px;
+}
+
 /* fine   lista contatti a sx */
+/* inizio spazio chat a dx    */
+#chat{
+  width: 62%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+footer {
+  height: 90px;
+  width: 100%;
+
+}
+/* fine   spazio chat a dx    */
 
 /* fine   contenitore principale */
