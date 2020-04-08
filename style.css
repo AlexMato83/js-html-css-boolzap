@@ -268,12 +268,27 @@ main {
   justify-content: center;
   align-items: center;
 }
-.chat-main-blocchimex:nth-child(4){
-   justify-content: flex-end;
+
+/* inizio messaggi inviati */
+.chat-main-blocchimex-invio {
+  width: 100%;
+  height: 80px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
-.chat-main-blocchimex:nth-child(4) div{
-background: #D5F9BA;
+.chat-main-bloc-int-invio {
+  width: 180px;
+  height: 80%;
+  background: #D5F9BA;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+/* fine messaggi inviati */
+
 /* fine   spazio chat a dx    */
 /* inizio footerino */
 footer {

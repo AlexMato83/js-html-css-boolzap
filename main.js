@@ -2,9 +2,19 @@ $(document).ready(function(){
    $("#invia").click(
      function(){
        var messaggio = $("#mex").val();
-       var mexInChat = $(".mex-stampato");
-       var rowMex = $("#chat-main-margini");
-       rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + mexInChat + '</p></div></div>');
+       if (messaggio != "") {
+         var mexInChat = $(".mex-stampato");
+         var rowMex = $("#chat-main-margini");
+         rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p class=".mex-stampato">' + messaggio + '</p></div></div>');
+         $("#mex").val("");
+         setTimeout(risposta,1000);
+         function risposta() {
+           rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p></div></div>');
+
+         }
+
+
+       }
      }
    )
 
