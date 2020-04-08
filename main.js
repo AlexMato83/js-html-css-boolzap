@@ -17,6 +17,30 @@ $(document).ready(function(){
        }
      }
    )
+    //cerco un determinato profilo utilizzando l'input search sovrastante
+    $("#contatti-fissa-cerca").keypress(function (e) {
+        var key = e.which;
+        if(key == 13){
+          $( ".cont-utenti-singoli" ).each(function( cerca ) {
+            console.log(cerca);
+            // assegno valore alle lettere inserite
+            var ricerca = $("#search").val().toLowerCase();
+            console.log(ricerca);
+            // collego i nomi dei profili (.cont-ut-sing-dati h3)
+            var nomiProfili = $(this).find(".cont-utenti-singoli .cont-ut-sing-dati h3").text().toLowerCase();
+            console.log(nomiProfili);
+            if (nomiProfili.includes(ricerca)) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+
+
+          });
+
+        }
+    });
+
 
 
 });
