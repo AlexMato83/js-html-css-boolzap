@@ -3,8 +3,8 @@ $(document).ready(function(){
      function(){
        var messaggio = $("#mex").val();
        if (messaggio != "") {
-         var mexInChat = $(".mex-stampato");
-         var rowMex = $("#chat-main-margini");
+
+         var rowMex = $(".chat-main-margini");
          rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p class=".mex-stampato">' + messaggio + '</p></div></div>');
          $("#mex").val("");
          setTimeout(risposta,1000);
@@ -18,17 +18,15 @@ $(document).ready(function(){
      }
    )
     //cerco un determinato profilo utilizzando l'input search sovrastante
-    $("#contatti-fissa-cerca").keypress(function (e) {
-        var key = e.which;
-        if(key == 13){
-          $( ".cont-utenti-singoli" ).each(function( cerca ) {
-            console.log(cerca);
-            // assegno valore alle lettere inserite
-            var ricerca = $("#search").val().toLowerCase();
-            console.log(ricerca);
+    $("#search").keyup(function () {
+      // assegno valore alle lettere inserite
+      var ricerca = $(this).val().toLowerCase();
+        console.log(ricerca);
+          // ciclo ogni singolo div
+          $(".cont-utenti-singoli").each(function() {
             // collego i nomi dei profili (.cont-ut-sing-dati h3)
-            var nomiProfili = $(this).find(".cont-utenti-singoli .cont-ut-sing-dati h3").text().toLowerCase();
-            console.log(nomiProfili);
+            var nomiProfili = $(this).find(".cont-ut-sing-dati h3").text().toLowerCase();
+               console.log(nomiProfili);
             if (nomiProfili.includes(ricerca)) {
               $(this).show();
             } else {
@@ -38,21 +36,56 @@ $(document).ready(function(){
 
           });
 
-        }
+
     });
+    // var prova = $(".chat-main").data(chat);
+    // console.log(prova);
+
+
+    //evento click sui profili
+    $(".cont-utenti-singoli").click(
+      function() {
+        $(".chat-main").removeClass("active");
+        $(this).addClass("cliccato");
+      console.log(($(".cont-utenti-singoli.cliccato")));
+        $(".chat-main").each(
+          function(){
+            if ($(".cont-utenti-singoli.cliccato").data("profilo")==$(this).data("chat") ) {
+              $(this).addClass("active");
+            }
+
+
+          }
+        )
+        $(this).removeClass("cliccato");
 
 
 
+
+
+        // scoprire l'indirizzo delle charset
+        // var indiceChat = $(".chat-main").index()
+        // console.log(indiceChat);
+        // var indiceChat =
+        // $(".chat-main").removeClass("active")
+        // $(this).eq()
+      }
+    )
+    //Click sul contatto mostra la conversazione del contatto cliccato
+    // click sul contatto che ha data-attr che corrisponde a stesso data-attr in chat
+    // salvo il valore dell'attr e lo usso per dire quale chat è attiva
+
+
+  // è possibile inserire nuovi messaggi per ogni conversazione [attiva]
+
+
+  // Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+    // son riuascito ad agganciarte l'evento sul "delete" potrò dirgli una roba tipo this.padre.cancella();
+    // $('.right-messages').on("click", ".message",
+    //    function () {
+    //   //   alert("hai cliccato su di me!");
+    //     $(this).hide();
+    //    }
+    //
+    // );
 });
-// filtro contatti
-  //gestirte evento su tastiera (oppure su click di bottone di input ricerca)
-
-  // salvarmi input utente in campo del filtro (stringa1)
-
-  // selezionare tutti i blocchi di contatto e ciclare tra di essi (each())
-    //salvo in una var il valore del testo del nome nel contatto (stringa2)
-
-    // confronto per vedere se la stringa inserita nell'input è inclusa nel nome del contatto
-      //stringa2.includes(stringa1)
-      //se l'occorenza è stata trovata lascio il blocco di contatto visibile
-      // altrimenti lo rendo non visibile (this)
