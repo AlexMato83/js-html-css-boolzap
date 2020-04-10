@@ -2,6 +2,9 @@ $(document).ready(function(){
 
   // INIZIO FUNZIONE PER GESTIRE LA CHAT DI DESTRA
   // collego evento click all'icona dell'input messaggio
+    // nascondo icona cancella
+    var iconaNascosta = $(".fas.fa-angle-down").hide();
+
    $("#invia").click(
      function(){
        // creo var corrispondente a valore messaggio inserito nell'input
@@ -11,14 +14,21 @@ $(document).ready(function(){
          // creo var corrispondente a padre delle caselle messaggio
          var rowMex = $(".chat-main-margini");
          // appendo al padre delle caselle messaggio una casella messaggio con il messaggio acquisito dentro
-         rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p class=".mex-stampato">' + messaggio + '</p></div></div>');
+         //con aggiunta di icona cancella
+         rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>')
+         // nascondo icona cancella
+         var iconaNascosta = $(".fas.fa-angle-down").hide();
          // cancello il testo inserito nell'input
          $("#mex").val("");
          // imposto il tempo dopo il quale deve avvenire la risposta
          setTimeout(risposta,1000);
          function risposta() {
            // appendo al padre delle caselle messaggio una casella messaggio "ricevuta"
-           rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p></div></div>');
+           //con aggiunta di icona cancella
+           rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>');
+           // nascondo icona cancella
+           var iconaNascosta = $(".fas.fa-angle-down").hide();
+
          }
        }
      }
@@ -26,10 +36,13 @@ $(document).ready(function(){
    // FINE FUNZIONE PER GESTIRE LA CHAT DI DESTRA
 
    // INIZIO FUNZIONE PER GESTIRE HOVER SUI PROFILI
+   // creo funzione hover sui profili
    $(".cont-utenti-singoli").hover(
      function() {
+       //cambio background color al profili su ci va il cursore
        $( this ).css('background-color', '#cffafa');
      }, function() {
+       // quando il cursore esce da quel profilo metto valore nullo al background
        $( this ).css('background-color', '');
      }
    );
@@ -59,8 +72,8 @@ $(document).ready(function(){
     });
     // FINE  FUNZIONE PER SELEZIONARE I PROFILI DAl SEARCH
 
-    // INIZIO FUNZIONE PER SELEZIONARE LE VARIE CHAT CORRISPONDENTI AI PROFILI
 
+    // INIZIO FUNZIONE PER SELEZIONARE LE VARIE CHAT CORRISPONDENTI AI PROFILI
       //creo evento click sui profili
     $(".cont-utenti-singoli").click(
       function() {
@@ -72,13 +85,6 @@ $(document).ready(function(){
         $(".cont-utenti-singoli").css("background-color", "");
         // aggiungo colore sfondo grigio al profilo cliccato
         $(this).css('background-color', '#84fafa');
-        // prove
-
-
-        // $( "li.fade" ).hover(function() {
-        //   $( this ).fadeOut( 100 );
-        //   $( this ).fadeIn( 500 );
-        // });
       console.log(($(".cont-utenti-singoli.cliccato")));
         // ciclo tutte le chat
         $(".chat-main").each(
@@ -96,7 +102,41 @@ $(document).ready(function(){
     )
     // FINE FUNZIONE PER SELEZIONARE LE VARIE CHAT CORRISPONDENTI AI PROFILI
 
+    // INIZIO FUNZIONE PER POTER CANCELLARE I messaggi
+    // assegno var all'icona
+    // quando col mouse vado sopra la casella messaggio compare l'icona
+      $('.chat-main').on("mouseenter", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
+       function () {
+        $(this).find("i").show();
+        var cane = $(this).find("i");
+        
+      })
+      // quando col mouse esco dalla casella l'icona scompare
+      $('.chat-main').on("mouseleave", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
+       function () {
+      //   alert("hai cliccato su di me!");
+      $(this).find("i").hide();
+      })
+    // $(".chat-main-bloc-int, .chat-main-bloc-int-invio").hover(
+    //   function() {
+    //     $(this).find("i").show();
+    //     // quando esco dalla casella col cursore l'icona scompare
+    //   }, function() {
+    //     $(this).find("i").hide();
+    //
+    //   }
+    // )
+    // creo evento click sul primo parente dell'icona creata
+    // rendo in display bloc l'opzione "cancella"
+    // se clicco "cancella" l'intera casella messaggio va in "display none"
 
+
+
+    $(".chat-main-bloc-int").hover(
+      function(){
+
+      }
+    )
 
 
 

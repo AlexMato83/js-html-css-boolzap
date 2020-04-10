@@ -267,6 +267,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
 }
 
 /* inizio messaggi inviati */
@@ -286,6 +288,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 /* fine messaggi inviati */
 
@@ -312,5 +315,27 @@ footer i {
 .active {
   display: block;
 }
+.icona-cancella {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: x-large;
+  /* display: none; */
+}
+.cancella {
+  /* display: none; */
+  position: absolute;
+  top: 25px;
+  right: 0px;
+  background: white;
+  width: 135px;
+  height: 60px;
+  text-align: center;
+  padding: 7px;
+  list-style-type: none;
+  border: 2px solid grey;
+  display: none;
+}
 
+}
 /* fine   contenitore principale */
