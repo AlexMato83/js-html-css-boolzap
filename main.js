@@ -107,16 +107,38 @@ $(document).ready(function(){
     // quando col mouse vado sopra la casella messaggio compare l'icona
       $('.chat-main').on("mouseenter", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
        function () {
+        //trovo l'icona partendo dalla casella e la mostro
         $(this).find("i").show();
-        var cane = $(this).find("i");
-        
+        // attribuisco un var all'icona mostrata
+        var iTrovata = $(this).find("i");
+        // trovo l'ul partendo dalla casella e gli attribuisco una var
+        var ulTrovata = $(this).find("ul")
+        // creo il click sull'icona
+        $(iTrovata).click(
+          function(){
+            // se clicco sull'icona mostro l'ul del messaggio delete
+            $(ulTrovata).show();
+          }
+        );
+        // se clicco sul "cancella-messaggio" scompare l'intero messaggio
+        $(this).find("ul").click(
+          function(){
+            $(this).parents(".chat-main-blocchimex").hide();
+          }
+        )
+
+        // se esco col cursore dalla casella scompare sia l'icona che il "cancella-messaggio"
+        $('.chat-main').on("mouseleave", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
+         function () {
+        //   alert("hai cliccato su di me!");
+        $(this).find("i").hide();
+        $(this).find("ul").hide();
+        })
+
       })
+
       // quando col mouse esco dalla casella l'icona scompare
-      $('.chat-main').on("mouseleave", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
-       function () {
-      //   alert("hai cliccato su di me!");
-      $(this).find("i").hide();
-      })
+
     // $(".chat-main-bloc-int, .chat-main-bloc-int-invio").hover(
     //   function() {
     //     $(this).find("i").show();
