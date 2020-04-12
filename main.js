@@ -1,39 +1,5 @@
 $(document).ready(function(){
 
-  // INIZIO FUNZIONE PER GESTIRE LA CHAT DI DESTRA
-  // collego evento click all'icona dell'input messaggio
-    // nascondo icona cancella
-    var iconaNascosta = $(".fas.fa-angle-down").hide();
-
-   $("#invia").click(
-     function(){
-       // creo var corrispondente a valore messaggio inserito nell'input
-       var messaggio = $("#mex").val();
-       // condizione per la quale se il mex è diverso da "vuoto" faccio partire la funzione
-       if (messaggio != "") {
-         // creo var corrispondente a padre delle caselle messaggio
-         var rowMex = $(".chat-main-margini");
-         // appendo al padre delle caselle messaggio una casella messaggio con il messaggio acquisito dentro
-         //con aggiunta di icona cancella
-         rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>')
-         // nascondo icona cancella
-         var iconaNascosta = $(".fas.fa-angle-down").hide();
-         // cancello il testo inserito nell'input
-         $("#mex").val("");
-         // imposto il tempo dopo il quale deve avvenire la risposta
-         setTimeout(risposta,1000);
-         function risposta() {
-           // appendo al padre delle caselle messaggio una casella messaggio "ricevuta"
-           //con aggiunta di icona cancella
-           rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>');
-           // nascondo icona cancella
-           var iconaNascosta = $(".fas.fa-angle-down").hide();
-
-         }
-       }
-     }
-   )
-   // FINE FUNZIONE PER GESTIRE LA CHAT DI DESTRA
 
    // INIZIO FUNZIONE PER GESTIRE HOVER SUI PROFILI
    // creo funzione hover sui profili
@@ -79,13 +45,16 @@ $(document).ready(function(){
       function() {
         // rimuovo display block da tutte le chat
         $(".chat-main").removeClass("active");
+        $(".chat-main-margini").removeClass("active");
+
         // aggiungo una classe vuota ad ogni profilo cliccato
         $(this).addClass("cliccato");
         // azzero il colore di sfondo ad ogni profilo
         $(".cont-utenti-singoli").css("background-color", "");
-        // aggiungo colore sfondo grigio al profilo cliccato
+        // aggiungo colore sfondo celeste al profilo cliccato
         $(this).css('background-color', '#84fafa');
       console.log(($(".cont-utenti-singoli.cliccato")));
+
         // ciclo tutte le chat
         $(".chat-main").each(
           function(){
@@ -93,6 +62,45 @@ $(document).ready(function(){
             if ($(".cont-utenti-singoli.cliccato").data("profilo")==$(this).data("chat") ) {
               // allora quella chat verrà messa in display block
               $(this).addClass("active");
+              $(this).children().addClass("active");
+              // INIZIO FUNZIONE PER GESTIRE LA CHAT DI DESTRA
+              // collego evento click all'icona dell'input messaggio
+                // nascondo icona cancella
+                var iconaNascosta = $(".fas.fa-angle-down").hide();
+
+               $("#invia").click(
+                 function(){
+                   if ($(".chat-main").hasClass("active")){
+                     // creo var corrispondente a valore messaggio inserito nell'input
+                     var messaggio = $("#mex").val();
+                     // condizione per la quale se il mex è diverso da "vuoto" faccio partire la funzione
+                     if (messaggio != "") {
+                       // creo var corrispondente a padre delle caselle messaggio
+                       var rowMex = $(".chat-main-margini.active");
+                       // appendo al padre delle caselle messaggio una casella messaggio con il messaggio acquisito dentro
+                       //con aggiunta di icona cancella
+                       rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>')
+                       // nascondo icona cancella
+                       var iconaNascosta = $(".fas.fa-angle-down").hide();
+                       // cancello il testo inserito nell'input
+                       $("#mex").val("");
+                       // imposto il tempo dopo il quale deve avvenire la risposta
+                       setTimeout(risposta,1000);
+                       function risposta() {
+                         // appendo al padre delle caselle messaggio una casella messaggio "ricevuta"
+                         //con aggiunta di icona cancella
+                         rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>');
+                         // nascondo icona cancella
+                         var iconaNascosta = $(".fas.fa-angle-down").hide();
+
+                       }
+                     }
+                   }
+
+                 }
+               )
+               // FINE FUNZIONE PER GESTIRE LA CHAT DI DESTRA
+
             }
          }
         )
@@ -136,30 +144,6 @@ $(document).ready(function(){
         })
 
       })
-
-      // quando col mouse esco dalla casella l'icona scompare
-
-    // $(".chat-main-bloc-int, .chat-main-bloc-int-invio").hover(
-    //   function() {
-    //     $(this).find("i").show();
-    //     // quando esco dalla casella col cursore l'icona scompare
-    //   }, function() {
-    //     $(this).find("i").hide();
-    //
-    //   }
-    // )
-    // creo evento click sul primo parente dell'icona creata
-    // rendo in display bloc l'opzione "cancella"
-    // se clicco "cancella" l'intera casella messaggio va in "display none"
-
-
-
-    $(".chat-main-bloc-int").hover(
-      function(){
-
-      }
-    )
-
 
 
 
