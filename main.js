@@ -111,11 +111,50 @@ $(document).ready(function(){
       // INIZIO FUNZIONE PER GESTIRE LA CHAT DI DESTRA
       // collego evento click all'icona dell'input messaggio
         // nascondo icona cancella
-        var iconaNascosta = $(".fas.fa-angle-down").hide();
+        $(".fas.fa-angle-down").hide();
 
        $("#invia").click(
          function(){
            if ($(".chat-main").hasClass("active")){
+             // creo var corrispondente a valore messaggio inserito nell'input
+             var messaggio = $("#mex").val();
+             // condizione per la quale se il mex è diverso da "vuoto" faccio partire la funzione
+             if (messaggio != "") {
+
+               console.log("1");
+               // creo var corrispondente a padre delle caselle messaggio
+               var rowMex = $(".chat-main-margini.active");
+
+               console.log("2", rowMex);
+               // appendo al padre delle caselle messaggio una casella messaggio con il messaggio acquisito dentro
+               //con aggiunta di icona cancella
+               rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>')
+               // nascondo icona cancella
+               // $(".fas.fa-angle-down").hide();
+               // cancello il testo inserito nell'input
+               $("#mex").val("");
+               // imposto il tempo dopo il quale deve avvenire la risposta
+               setTimeout(risposta,1000);
+               function risposta() {
+                 // appendo al padre delle caselle messaggio una casella messaggio "ricevuta"
+                 //con aggiunta di icona cancella
+                 rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>');
+                 // nascondo icona cancella
+                 $(".fas.fa-angle-down").hide();
+
+               }
+             }
+           }
+
+         }
+       )
+       // FINE FUNZIONE PER GESTIRE LA CHAT DI DESTRA
+
+       // Funzione per inviare il messaggio premendo invio
+         $("#mex").keypress(function(event){
+           if (event.which == 13) {
+           if ($(".chat-main").hasClass("active")){
+
              // creo var corrispondente a valore messaggio inserito nell'input
              var messaggio = $("#mex").val();
              // condizione per la quale se il mex è diverso da "vuoto" faccio partire la funzione
@@ -126,9 +165,10 @@ $(document).ready(function(){
                //con aggiunta di icona cancella
                rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>')
                // nascondo icona cancella
-               var iconaNascosta = $(".fas.fa-angle-down").hide();
+               // $(".fas.fa-angle-down").hide();
                // cancello il testo inserito nell'input
                $("#mex").val("");
+               $(".fas.fa-angle-down").hide();
                // imposto il tempo dopo il quale deve avvenire la risposta
                setTimeout(risposta,1000);
                function risposta() {
@@ -136,15 +176,14 @@ $(document).ready(function(){
                  //con aggiunta di icona cancella
                  rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>');
                  // nascondo icona cancella
-                 var iconaNascosta = $(".fas.fa-angle-down").hide();
+                 $(".fas.fa-angle-down").hide();
 
                }
              }
            }
+          }
+       })
 
-         }
-       )
-       // FINE FUNZIONE PER GESTIRE LA CHAT DI DESTRA
 
 
 });
