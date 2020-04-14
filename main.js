@@ -74,9 +74,8 @@ $(document).ready(function(){
     // FINE FUNZIONE PER SELEZIONARE LE VARIE CHAT CORRISPONDENTI AI PROFILI
 
     // INIZIO FUNZIONE PER POTER CANCELLARE I messaggi
-    // assegno var all'icona
     // quando col mouse vado sopra la casella messaggio compare l'icona
-      $('.chat-main').on("mouseenter", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
+      $('.chat-main-margini').on("mouseenter", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
        function () {
         //trovo l'icona partendo dalla casella e la mostro
         $(this).find("i").show();
@@ -89,14 +88,16 @@ $(document).ready(function(){
           function(){
             // se clicco sull'icona mostro l'ul del messaggio delete
             $(ulTrovata).show();
+            // se clicco sul "cancella-messaggio" scompare l'intero messaggio
+            $(this).next().click(
+              function(){
+
+                $(this).parents(".chat-main-blocchimex, .chat-main-bloc-int-invio").hide();
+              }
+            )
           }
         );
-        // se clicco sul "cancella-messaggio" scompare l'intero messaggio
-        $(this).find("ul").click(
-          function(){
-            $(this).parents(".chat-main-blocchimex").hide();
-          }
-        )
+
 
         // se esco col cursore dalla casella scompare sia l'icona che il "cancella-messaggio"
         $('.chat-main').on("mouseleave", ".chat-main-bloc-int, .chat-main-bloc-int-invio",
@@ -123,7 +124,7 @@ $(document).ready(function(){
                var rowMex = $(".chat-main-margini.active");
                // appendo al padre delle caselle messaggio una casella messaggio con il messaggio acquisito dentro
                //con aggiunta di icona cancella
-               rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>')
+               rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>')
                // nascondo icona cancella
                var iconaNascosta = $(".fas.fa-angle-down").hide();
                // cancello il testo inserito nell'input
@@ -133,7 +134,7 @@ $(document).ready(function(){
                function risposta() {
                  // appendo al padre delle caselle messaggio una casella messaggio "ricevuta"
                  //con aggiunta di icona cancella
-                 rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i></div></div>');
+                 rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>');
                  // nascondo icona cancella
                  var iconaNascosta = $(".fas.fa-angle-down").hide();
 
@@ -144,4 +145,6 @@ $(document).ready(function(){
          }
        )
        // FINE FUNZIONE PER GESTIRE LA CHAT DI DESTRA
+
+
 });
