@@ -1,18 +1,6 @@
 $(document).ready(function(){
 
 
-   // INIZIO FUNZIONE PER GESTIRE HOVER SUI PROFILI
-   // creo funzione hover sui profili
-   $(".cont-utenti-singoli").hover(
-     function() {
-       //cambio background color al profili su ci va il cursore
-       $( this ).css('background-color', '#cffafa');
-     }, function() {
-       // quando il cursore esce da quel profilo metto valore nullo al background
-       $( this ).css('background-color', '');
-     }
-   );
-   // FINE FUNZIONE PER GESTIRE HOVER SUI PROFILI
 
 
    // INIZIO FUNZIONE PER SELEZIONARE I PROFILI DAl SEARCH
@@ -183,6 +171,32 @@ $(document).ready(function(){
            }
           }
        })
+       // clicco un profilo
+       $(".cont-utenti-singoli").click(
+         function(){
+           // salvo il nome del profilo cliccato
+           var profiloCliccato = $(this).find("h3").text();
+           console.log(profiloCliccato);
+           // salvo il nome del profilo nell'header
+           var sgarbi = $("#profili").find("h3").text();
+           // salvo il div contenitore del profilo dell'header
+           var padreSgarbi = $("#profili img").next();
+           console.log(padreSgarbi);
+           console.log(sgarbi);
+
+           // rimuovo il nome del profilo header
+           $("#profili h3").remove();
+           // rimuovo l'immagine del profilo header
+           $("#profili img").remove();
+           // sostituisco il nome cliccato al nome del profilo header
+           $($(this).find("h3")).clone().prependTo("#padre");
+           // sostituisco l'immagine cliccata all'immagine del profilo header
+            $($(this).find("img")).clone().prependTo("#profili")
+
+
+         }
+       )
+
 
 
 

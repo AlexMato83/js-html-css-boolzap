@@ -336,6 +336,9 @@ footer i {
   border: 2px solid grey;
   display: none;
 }
-
+.cont-utenti-singoli:hover {
+  background-color: #cffafa;
 }
+
+
 /* fine   contenitore principale */
