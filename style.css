@@ -248,7 +248,7 @@ main {
 }
 .chat-main-margini {
   width: 80%;
-  height: 100%;
+  /* height: 100%; */
   margin:0 auto;
   display:
 }
@@ -337,7 +337,7 @@ footer i {
   display: none;
 }
 .cont-utenti-singoli:hover {
-  background-color: #cffafa;
+  background-color: #cffafa
 }
 
 

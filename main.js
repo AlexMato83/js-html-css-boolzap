@@ -101,7 +101,12 @@ $(document).ready(function(){
        $(".fas.fa-angle-down").hide();
        $("#invia").click(
          function(){
-           if ($(".chat-main").hasClass("active")){
+
+
+
+
+
+
              // creo var corrispondente a valore messaggio inserito nell'input
              var messaggio = $("#mex").val();
              // condizione per la quale se il mex è diverso da "vuoto" faccio partire la funzione
@@ -154,10 +159,13 @@ $(document).ready(function(){
                  rowMex.append(html);
                  // nascondo icona cancella
                  $(".fas.fa-angle-down").hide();
-
+                 // var cane = $(".chat-main-margini").innerHeight();
+                 // $(".chat-main").animate({
+                 //   scrollTop:cane
+                 // },2000);
                }
              }
-           }
+
 
          }
        )
@@ -259,7 +267,7 @@ $(document).ready(function(){
         $("#profili").click(
           function(){
           $( "#chat-main active" ).animate({scrollTop: 30});
-            
+
           }
         )
 
