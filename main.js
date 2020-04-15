@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 
 
-
    // INIZIO FUNZIONE PER SELEZIONARE I PROFILI DAl SEARCH
     //cerco un determinato profilo utilizzando l'input search sovrastante
     $("#search").keyup(function () {
@@ -79,8 +78,8 @@ $(document).ready(function(){
             // se clicco sul "cancella-messaggio" scompare l'intero messaggio
             $(this).next().click(
               function(){
+                $(this).parents(".chat-main-blocchimex, .chat-main-blocchimex-invio").hide();
 
-                $(this).parents(".chat-main-blocchimex, .chat-main-bloc-int-invio").hide();
               }
             )
           }
@@ -99,8 +98,7 @@ $(document).ready(function(){
       // INIZIO FUNZIONE PER GESTIRE LA CHAT DI DESTRA
       // collego evento click all'icona dell'input messaggio
         // nascondo icona cancella
-        $(".fas.fa-angle-down").hide();
-
+       $(".fas.fa-angle-down").hide();
        $("#invia").click(
          function(){
            if ($(".chat-main").hasClass("active")){
@@ -108,15 +106,27 @@ $(document).ready(function(){
              var messaggio = $("#mex").val();
              // condizione per la quale se il mex è diverso da "vuoto" faccio partire la funzione
              if (messaggio != "") {
-
-               console.log("1");
                // creo var corrispondente a padre delle caselle messaggio
                var rowMex = $(".chat-main-margini.active");
 
-               console.log("2", rowMex);
+               //INIZIO OPERAZIONI HANDLEBARS
+               // creo var associata all'html dentro #mex-template
+                var source = $('#mex-template').html();
+                // faccio analizzare il suo contenuto da Handlebars
+                var template = Handlebars.compile(source);
+                // attribuisco il messaggio dell'input a "mex"
+                var context = {
+                  "classeContenitore": "chat-main-blocchimex-invio",
+                  "classeMessaggio": "chat-main-bloc-int-invio",
+                  "mex": messaggio
+                };
+                // salvo il valore dell'input all'interno di handlebars
+                var html = template(context);
+               //FINE OPERAZIONI HANDLEBARS
+
                // appendo al padre delle caselle messaggio una casella messaggio con il messaggio acquisito dentro
                //con aggiunta di icona cancella
-               rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>')
+               rowMex.append(html);
                // nascondo icona cancella
                // $(".fas.fa-angle-down").hide();
                // cancello il testo inserito nell'input
@@ -124,9 +134,24 @@ $(document).ready(function(){
                // imposto il tempo dopo il quale deve avvenire la risposta
                setTimeout(risposta,1000);
                function risposta() {
+
+                 //INIZIO OPERAZIONI HANDLEBARS
+                 // creo var associata all'html dentro #mex-template
+                  var source = $('#mex-template').html();
+                  // faccio analizzare il suo contenuto da Handlebars
+                  var template = Handlebars.compile(source);
+                  // attribuisco il messaggio dell'input a "mex"
+                  var context = {
+                    "classeContenitore": "chat-main-blocchimex",
+                    "classeMessaggio": "chat-main-bloc-int",
+                    "mex": "ok"
+                  };
+                  // salvo il valore dell'input all'interno di handlebars
+                  var html = template(context);
+                 //FINE OPERAZIONI HANDLEBARS
                  // appendo al padre delle caselle messaggio una casella messaggio "ricevuta"
                  //con aggiunta di icona cancella
-                 rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>');
+                 rowMex.append(html);
                  // nascondo icona cancella
                  $(".fas.fa-angle-down").hide();
 
@@ -149,20 +174,46 @@ $(document).ready(function(){
              if (messaggio != "") {
                // creo var corrispondente a padre delle caselle messaggio
                var rowMex = $(".chat-main-margini.active");
+
+               //INIZIO OPERAZIONI HANDLEBARS
+               // creo var associata all'html dentro #mex-template
+                var source = $('#mex-template').html();
+                // faccio analizzare il suo contenuto da Handlebars
+                var template = Handlebars.compile(source);
+                // attribuisco il messaggio dell'input a "mex"
+                var context = {
+                  "classeContenitore": "chat-main-blocchimex-invio",
+                  "classeMessaggio": "chat-main-bloc-int-invio",
+                  "mex": messaggio
+                };
+                // salvo il valore dell'input all'interno di handlebars
+                var html = template(context);
+               //FINE OPERAZIONI HANDLEBARS
+
                // appendo al padre delle caselle messaggio una casella messaggio con il messaggio acquisito dentro
                //con aggiunta di icona cancella
-               rowMex.append('<div class="chat-main-blocchimex-invio"><div class="chat-main-bloc-int-invio"><p>' + messaggio + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>')
-               // nascondo icona cancella
-               // $(".fas.fa-angle-down").hide();
+               rowMex.append(html);
+
                // cancello il testo inserito nell'input
                $("#mex").val("");
                $(".fas.fa-angle-down").hide();
                // imposto il tempo dopo il quale deve avvenire la risposta
                setTimeout(risposta,1000);
                function risposta() {
+                 //INIZIO OPERAZIONI HANDLEBARS
+                  // attribuisco il messaggio dell'input a "mex"
+                  var context = {
+                    "classeContenitore": "chat-main-blocchimex",
+                    "classeMessaggio": "chat-main-bloc-int",
+                    "mex": "ok"
+                  };
+                  // salvo il valore dell'input all'interno di handlebars
+                  var html = template(context);
+                 //FINE OPERAZIONI HANDLEBARS
+
                  // appendo al padre delle caselle messaggio una casella messaggio "ricevuta"
                  //con aggiunta di icona cancella
-                 rowMex.append('<div class="chat-main-blocchimex"><div class="chat-main-bloc-int"><p class=".mex-stampato">' + "ok" + '</p><i class="fas fa-angle-down icona-cancella"></i><ul class="cancella"><li>Cancella messaggio</li></ul></div></div>');
+                 rowMex.append(html);
                  // nascondo icona cancella
                  $(".fas.fa-angle-down").hide();
 
@@ -171,18 +222,18 @@ $(document).ready(function(){
            }
           }
        })
-       // clicco un profilo
+        // INIZIO funzione per sostituire i profili cliccati a quello dell'header
        $(".cont-utenti-singoli").click(
          function(){
            // salvo il nome del profilo cliccato
            var profiloCliccato = $(this).find("h3").text();
            console.log(profiloCliccato);
            // salvo il nome del profilo nell'header
-           var sgarbi = $("#profili").find("h3").text();
+           var nomeHeader = $("#profili").find("h3").text();
            // salvo il div contenitore del profilo dell'header
            var padreSgarbi = $("#profili img").next();
            console.log(padreSgarbi);
-           console.log(sgarbi);
+           console.log(nomeHeader);
 
            // rimuovo il nome del profilo header
            $("#profili h3").remove();
@@ -192,11 +243,32 @@ $(document).ready(function(){
            $($(this).find("h3")).clone().prependTo("#padre");
            // sostituisco l'immagine cliccata all'immagine del profilo header
             $($(this).find("img")).clone().prependTo("#profili")
-
-
          }
        )
+       // FINE funzione per sostituire i profili cliccati a quello dell'header
 
+       $( "#image img" ).click(function() {
+          $( "#image img" ).animate({
+            opacity: 0.25,
+            left: "+=50",
+            height: "toggle"
+          }, 5000, function() {
+            // Animation complete.
+          });
+        });
+        $("#profili").click(
+          function(){
+          $( "#chat-main active" ).animate({scrollTop: 30});
+            
+          }
+        )
+
+       // var cane = "Marcello";
+       // var prova = {
+       //   "nome": cane,
+       //  "colore": "nero",
+       // };
+       //
 
 
 
